@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import React from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import YouTube from "react-youtube";
 
 function Modals(props) {
-    //use youtube link
-//   const [videoLink, setVideoLink] = useState('');
-
-//   React.useEffect(() => {
-//     setVideoLink(props.videoLink);
-//   }, [props.videoLink]);
-
+  console.log(props);
   return (
     <Modal
       {...props}
@@ -19,20 +14,20 @@ function Modals(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-         Video Tutorial
+          {props.headers}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <iframe
-          width="100%"
-          height="315"
-          src={props.videoLink}
-          title="YouTube video player"
-          frameBorder="0"
-          allow='autoplay; encrypted-media'
-          //allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        <YouTube
+          videoId={props.videolink} 
+          opts={{
+            width: "100%",
+            height: "315",
+            playerVars: {
+              autoplay: 1,
+            },
+          }}
+        />
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>

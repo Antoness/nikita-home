@@ -45,7 +45,7 @@ function FooterComponen() {
             <div className="mail">
               <Link className="text-decoration-none">
                 <i className="fa-regular fa-envelope"></i>
-                <p className="m-0">nikita@home.co.id</p>
+                <p className="m-0">support@nikitagenerator.com</p>
               </Link>
             </div>
           </Col>

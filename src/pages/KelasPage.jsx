@@ -1,16 +1,16 @@
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
-
 import { semuaKelas } from "../data/index";
 import Modals from "../components/modal";
 
 const KelasPage = () => {
-  const [showModal, setShowModal] = useState(false); // State to control modal visibility
-  const [selectedVideo, setSelectedVideo] = useState(""); // State to store the selected video link
+  const [showModal, setShowModal] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState("");
+  const [selectHeader, setSelectedheader] = useState("");
 
-  // Function to open the modal with a specific video link
-  const handleShowModal = (videoLink) => {
-    setSelectedVideo(videoLink);
+  const handleShowModal = (videolink, headers) => {
+    setSelectedVideo(videolink);
+    setSelectedheader(headers);
     setShowModal(true);
   };
 
@@ -22,7 +22,7 @@ const KelasPage = () => {
             <Col>
               <h1 className="fw-bold text-center">Tutorial</h1>
               <p className="text-center">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              visit our youtube channel for more details Nikita Creative.
               </p>
             </Col>
           </Row>
@@ -49,16 +49,10 @@ const KelasPage = () => {
                     <div className="ket d-flex justify-content-between align-item-center px-3 pb-3">
                       <button
                         className="btn btn-danger rounded-1"
-                        onClick={() => handleShowModal(kelas.link)}
+                        onClick={() => handleShowModal(kelas.link, kelas.title)}
                       >
                         {kelas.buy}
                       </button>
-
-                      <Modals
-                        show={showModal}
-                        onHide={() => setShowModal(false)}
-                        videoLink={selectedVideo}
-                      />
                     </div>
                   </div>
                 </Col>
@@ -67,6 +61,12 @@ const KelasPage = () => {
           </Row>
         </Container>
       </div>
+      <Modals
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        videolink={selectedVideo}
+        headers={selectHeader}
+      />
     </div>
   );
 };
